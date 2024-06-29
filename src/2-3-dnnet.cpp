@@ -321,9 +321,6 @@ SEXP backprop(NumericVector n_hidden, double w_ini,
 
         y_pi = exp(y_pi) / (sum(exp(y_pi), 1) * one_dim_y.t());
         d_a(n_layer) = -(yi_ - y_pi) % (wi_ * one_dim_y.t()) / sum(wi_);
-      } else if(loss_f == "gamma") {
-
-        d_a(n_layer) = -(yi_ / exp(y_pi) - 1) % (wi_ * one_dim_y.t()) / sum(wi_);
       } else if(loss_f == "poisson") {
 
         d_a(n_layer) = -(yi_ - exp(y_pi)) % (wi_ * one_dim_y.t()) / sum(wi_);
@@ -583,9 +580,6 @@ SEXP backprop(NumericVector n_hidden, double w_ini,
 
         y_pred = y_pred % (y_pred > 0);
         loss[k] = sum(w_valid_ % pow(log(y_valid_ + 1) - log(y_pred + 1), 2)) / sum(w_valid_);
-      } else if(loss_f == "gamma") {
-
-        loss[k] = sum(w_valid_ % sum(y_valid_ / exp(y_pred) + y_pred, 1)) / sum(w_valid_);
       } else if(loss_f == "poisson") {
 
         loss[k] = sum(w_valid_ % sum(-y_valid_ % y_pred + exp(y_pred), 1)) / sum(w_valid_);
@@ -1545,7 +1539,7 @@ SEXP backprop_surv(NumericVector n_hidden, double w_ini, // List weight, List bi
       } else {
 
         weight_(i) = (randu<mat>(x_.n_cols, n_hidden[i]) - 0.5) * w_ini * 2;
-        bias_(i) = vec(n_hidden[i], fill::zeros);
+        bias_(i) = (randu<vec>(n_hidden[i]) - 0.5) * w_ini;
       }
       dw(i) = mat(x_.n_cols, n_hidden[i], fill::zeros);
       db(i) = vec(n_hidden[i], fill::zeros);
@@ -1557,7 +1551,7 @@ SEXP backprop_surv(NumericVector n_hidden, double w_ini, // List weight, List bi
       } else {
 
         weight_(i) = (randu<mat>(n_hidden[i-1], 1) - 0.5) * w_ini * 2;
-        bias_(i) = vec(1, fill::zeros);
+        bias_(i) = (randu<vec>(1) - 0.5) * w_ini;
       }
       dw(i) = mat(n_hidden[i-1], y_.n_cols, fill::zeros);
       db(i) = vec(y_.n_cols, fill::zeros);
@@ -1569,7 +1563,7 @@ SEXP backprop_surv(NumericVector n_hidden, double w_ini, // List weight, List bi
       } else {
 
         weight_(i) = (randu<mat>(n_hidden[i-1], n_hidden[i]) - 0.5) * w_ini * 2;
-        bias_(i) = vec(n_hidden[i], fill::zeros);
+        bias_(i) = (randu<vec>(n_hidden[i]) - 0.5) * w_ini;
       }
       dw(i) = mat(n_hidden[i-1], n_hidden[i], fill::zeros);
       db(i) = vec(n_hidden[i], fill::zeros);
@@ -1823,7 +1817,7 @@ SEXP backprop_surv(NumericVector n_hidden, double w_ini, // List weight, List bi
         db(n_layer) = bias_grad    * learning_rate;
       }
       weight_(n_layer) = weight_(n_layer) - dw(n_layer) - l1_reg * (conv_to<mat>::from(weight_(n_layer) > 0) - conv_to<mat>::from(weight_(n_layer) < 0)) - l2_reg * (weight_(n_layer));
-      bias_(n_layer)   = bias_(n_layer) ;
+      bias_(n_layer)   = bias_(n_layer)   - db(n_layer) - mean(y_pi);
       for(int j = n_layer - 1; j >= 0; j--) {
 
         d_h(j) = d_a(j + 1) * weight_(j + 1).t();
@@ -1894,7 +1888,7 @@ SEXP backprop_surv(NumericVector n_hidden, double w_ini, // List weight, List bi
           db(j) = bias_grad * learning_rate;
         }
         weight_(j) = weight_(j) - dw(j) - l1_reg * (conv_to<mat>::from(weight_(j) > 0) - conv_to<mat>::from(weight_(j) < 0)) - l2_reg * (weight_(j));
-        bias_(j)   = bias_(j);  // column mean
+        bias_(j)   = bias_(j)   - db(j);  // column mean
       }
     }
 
@@ -1999,5 +1993,6 @@ SEXP backprop_surv(NumericVector n_hidden, double w_ini, // List weight, List bi
   result(3) = break_k;
   return(result);
 }
+
 
 
