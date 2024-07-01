@@ -13,7 +13,7 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 
 // backprop
 SEXP backprop(NumericVector n_hidden, double w_ini, bool load_param, List weight, List bias, NumericMatrix x, NumericMatrix y, NumericVector w, bool valid, NumericMatrix x_valid, NumericVector y_valid, NumericVector w_valid, std::string activ, int n_epoch, int n_batch, std::string model_type, double learning_rate, double l1_reg, double l2_reg, bool early_stop, int early_stop_det, std::string learning_rate_adaptive, double rho, double epsilon, double beta1, double beta2, std::string loss_f);
-RcppExport SEXP _deepTL_backprop(SEXP n_hiddenSEXP, SEXP w_iniSEXP, SEXP load_paramSEXP, SEXP weightSEXP, SEXP biasSEXP, SEXP xSEXP, SEXP ySEXP, SEXP wSEXP, SEXP validSEXP, SEXP x_validSEXP, SEXP y_validSEXP, SEXP w_validSEXP, SEXP activSEXP, SEXP n_epochSEXP, SEXP n_batchSEXP, SEXP model_typeSEXP, SEXP learning_rateSEXP, SEXP l1_regSEXP, SEXP l2_regSEXP, SEXP early_stopSEXP, SEXP early_stop_detSEXP, SEXP learning_rate_adaptiveSEXP, SEXP rhoSEXP, SEXP epsilonSEXP, SEXP beta1SEXP, SEXP beta2SEXP, SEXP loss_fSEXP) {
+RcppExport SEXP _deepTLRm_backprop(SEXP n_hiddenSEXP, SEXP w_iniSEXP, SEXP load_paramSEXP, SEXP weightSEXP, SEXP biasSEXP, SEXP xSEXP, SEXP ySEXP, SEXP wSEXP, SEXP validSEXP, SEXP x_validSEXP, SEXP y_validSEXP, SEXP w_validSEXP, SEXP activSEXP, SEXP n_epochSEXP, SEXP n_batchSEXP, SEXP model_typeSEXP, SEXP learning_rateSEXP, SEXP l1_regSEXP, SEXP l2_regSEXP, SEXP early_stopSEXP, SEXP early_stop_detSEXP, SEXP learning_rate_adaptiveSEXP, SEXP rhoSEXP, SEXP epsilonSEXP, SEXP beta1SEXP, SEXP beta2SEXP, SEXP loss_fSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -50,7 +50,7 @@ END_RCPP
 }
 // backprop_long
 SEXP backprop_long(NumericVector n_hidden, double w_ini, List weight_pathway, NumericVector bias_pathway, double l1_pathway, double l2_pathway, bool load_param, List weight, List bias, NumericMatrix x, NumericMatrix y, NumericVector w, List x_pathway, bool valid, NumericMatrix x_valid, NumericVector y_valid, NumericVector w_valid, List x_valid_pathway, std::string activ, std::string activ_pathway, int n_epoch, int n_batch, std::string model_type, double learning_rate, double l1_reg, double l2_reg, bool early_stop, int early_stop_det, std::string learning_rate_adaptive, double rho, double epsilon, double beta1, double beta2, std::string loss_f);
-RcppExport SEXP _deepTL_backprop_long(SEXP n_hiddenSEXP, SEXP w_iniSEXP, SEXP weight_pathwaySEXP, SEXP bias_pathwaySEXP, SEXP l1_pathwaySEXP, SEXP l2_pathwaySEXP, SEXP load_paramSEXP, SEXP weightSEXP, SEXP biasSEXP, SEXP xSEXP, SEXP ySEXP, SEXP wSEXP, SEXP x_pathwaySEXP, SEXP validSEXP, SEXP x_validSEXP, SEXP y_validSEXP, SEXP w_validSEXP, SEXP x_valid_pathwaySEXP, SEXP activSEXP, SEXP activ_pathwaySEXP, SEXP n_epochSEXP, SEXP n_batchSEXP, SEXP model_typeSEXP, SEXP learning_rateSEXP, SEXP l1_regSEXP, SEXP l2_regSEXP, SEXP early_stopSEXP, SEXP early_stop_detSEXP, SEXP learning_rate_adaptiveSEXP, SEXP rhoSEXP, SEXP epsilonSEXP, SEXP beta1SEXP, SEXP beta2SEXP, SEXP loss_fSEXP) {
+RcppExport SEXP _deepTLRm_backprop_long(SEXP n_hiddenSEXP, SEXP w_iniSEXP, SEXP weight_pathwaySEXP, SEXP bias_pathwaySEXP, SEXP l1_pathwaySEXP, SEXP l2_pathwaySEXP, SEXP load_paramSEXP, SEXP weightSEXP, SEXP biasSEXP, SEXP xSEXP, SEXP ySEXP, SEXP wSEXP, SEXP x_pathwaySEXP, SEXP validSEXP, SEXP x_validSEXP, SEXP y_validSEXP, SEXP w_validSEXP, SEXP x_valid_pathwaySEXP, SEXP activSEXP, SEXP activ_pathwaySEXP, SEXP n_epochSEXP, SEXP n_batchSEXP, SEXP model_typeSEXP, SEXP learning_rateSEXP, SEXP l1_regSEXP, SEXP l2_regSEXP, SEXP early_stopSEXP, SEXP early_stop_detSEXP, SEXP learning_rate_adaptiveSEXP, SEXP rhoSEXP, SEXP epsilonSEXP, SEXP beta1SEXP, SEXP beta2SEXP, SEXP loss_fSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -94,7 +94,7 @@ END_RCPP
 }
 // backprop_surv
 SEXP backprop_surv(NumericVector n_hidden, double w_ini, bool load_param, List weight, List bias, NumericMatrix x, NumericMatrix y, NumericVector w, bool valid, NumericMatrix x_valid, NumericVector y_valid, NumericVector w_valid, std::string activ, int n_epoch, int n_batch, std::string model_type, double learning_rate, double l1_reg, double l2_reg, bool early_stop, int early_stop_det, std::string learning_rate_adaptive, double rho, double epsilon, double beta1, double beta2, std::string loss_f);
-RcppExport SEXP _deepTL_backprop_surv(SEXP n_hiddenSEXP, SEXP w_iniSEXP, SEXP load_paramSEXP, SEXP weightSEXP, SEXP biasSEXP, SEXP xSEXP, SEXP ySEXP, SEXP wSEXP, SEXP validSEXP, SEXP x_validSEXP, SEXP y_validSEXP, SEXP w_validSEXP, SEXP activSEXP, SEXP n_epochSEXP, SEXP n_batchSEXP, SEXP model_typeSEXP, SEXP learning_rateSEXP, SEXP l1_regSEXP, SEXP l2_regSEXP, SEXP early_stopSEXP, SEXP early_stop_detSEXP, SEXP learning_rate_adaptiveSEXP, SEXP rhoSEXP, SEXP epsilonSEXP, SEXP beta1SEXP, SEXP beta2SEXP, SEXP loss_fSEXP) {
+RcppExport SEXP _deepTLRm_backprop_surv(SEXP n_hiddenSEXP, SEXP w_iniSEXP, SEXP load_paramSEXP, SEXP weightSEXP, SEXP biasSEXP, SEXP xSEXP, SEXP ySEXP, SEXP wSEXP, SEXP validSEXP, SEXP x_validSEXP, SEXP y_validSEXP, SEXP w_validSEXP, SEXP activSEXP, SEXP n_epochSEXP, SEXP n_batchSEXP, SEXP model_typeSEXP, SEXP learning_rateSEXP, SEXP l1_regSEXP, SEXP l2_regSEXP, SEXP early_stopSEXP, SEXP early_stop_detSEXP, SEXP learning_rate_adaptiveSEXP, SEXP rhoSEXP, SEXP epsilonSEXP, SEXP beta1SEXP, SEXP beta2SEXP, SEXP loss_fSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -131,7 +131,7 @@ END_RCPP
 }
 // backprop_BLOCK
 SEXP backprop_BLOCK(List n_hidden, double w_ini, bool load_param, List weight, List bias, NumericMatrix x, NumericVector y, NumericVector w, bool valid, NumericMatrix x_valid, NumericVector y_valid, NumericVector w_valid, std::string activ, int n_epoch, int n_batch, std::string model_type, double learning_rate, double l1_reg, double l2_reg, bool early_stop, int early_stop_det, std::string learning_rate_adaptive, double rho, double epsilon, double beta1, double beta2, std::string loss_f);
-RcppExport SEXP _deepTL_backprop_BLOCK(SEXP n_hiddenSEXP, SEXP w_iniSEXP, SEXP load_paramSEXP, SEXP weightSEXP, SEXP biasSEXP, SEXP xSEXP, SEXP ySEXP, SEXP wSEXP, SEXP validSEXP, SEXP x_validSEXP, SEXP y_validSEXP, SEXP w_validSEXP, SEXP activSEXP, SEXP n_epochSEXP, SEXP n_batchSEXP, SEXP model_typeSEXP, SEXP learning_rateSEXP, SEXP l1_regSEXP, SEXP l2_regSEXP, SEXP early_stopSEXP, SEXP early_stop_detSEXP, SEXP learning_rate_adaptiveSEXP, SEXP rhoSEXP, SEXP epsilonSEXP, SEXP beta1SEXP, SEXP beta2SEXP, SEXP loss_fSEXP) {
+RcppExport SEXP _deepTLRm_backprop_BLOCK(SEXP n_hiddenSEXP, SEXP w_iniSEXP, SEXP load_paramSEXP, SEXP weightSEXP, SEXP biasSEXP, SEXP xSEXP, SEXP ySEXP, SEXP wSEXP, SEXP validSEXP, SEXP x_validSEXP, SEXP y_validSEXP, SEXP w_validSEXP, SEXP activSEXP, SEXP n_epochSEXP, SEXP n_batchSEXP, SEXP model_typeSEXP, SEXP learning_rateSEXP, SEXP l1_regSEXP, SEXP l2_regSEXP, SEXP early_stopSEXP, SEXP early_stop_detSEXP, SEXP learning_rate_adaptiveSEXP, SEXP rhoSEXP, SEXP epsilonSEXP, SEXP beta1SEXP, SEXP beta2SEXP, SEXP loss_fSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -168,14 +168,14 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_deepTL_backprop", (DL_FUNC) &_deepTL_backprop, 27},
-    {"_deepTL_backprop_long", (DL_FUNC) &_deepTL_backprop_long, 34},
-    {"_deepTL_backprop_surv", (DL_FUNC) &_deepTL_backprop_surv, 27},
-    {"_deepTL_backprop_BLOCK", (DL_FUNC) &_deepTL_backprop_BLOCK, 27},
+    {"_deepTLRm_backprop", (DL_FUNC) &_deepTLRm_backprop, 27},
+    {"_deepTLRm_backprop_long", (DL_FUNC) &_deepTLRm_backprop_long, 34},
+    {"_deepTLRm_backprop_surv", (DL_FUNC) &_deepTLRm_backprop_surv, 27},
+    {"_deepTLRm_backprop_BLOCK", (DL_FUNC) &_deepTLRm_backprop_BLOCK, 27},
     {NULL, NULL, 0}
 };
 
-RcppExport void R_init_deepTL(DllInfo *dll) {
+RcppExport void R_init_deepTLRm(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 }
